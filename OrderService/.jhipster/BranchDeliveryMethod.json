@@ -1,0 +1,31 @@
+{
+  "name": "BranchDeliveryMethod",
+  "fields": [
+    {
+      "fieldName": "deliveryMetod",
+      "fieldType": "DeliveryMethod",
+      "fieldValues": "STORE,US,PICKUP"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "branchDeliveryMethod",
+      "relationshipName": "branch"
+    }
+  ],
+  "entityTableName": "branch_delivery_method",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192447"
+}

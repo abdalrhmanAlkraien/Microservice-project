@@ -1,0 +1,50 @@
+{
+  "name": "PromoCode",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "times",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expireDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ascStore",
+      "otherEntityRelationshipName": "promoCode",
+      "relationshipName": "store"
+    }
+  ],
+  "entityTableName": "promo_code",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191647"
+}

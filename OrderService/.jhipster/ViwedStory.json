@@ -1,0 +1,31 @@
+{
+  "name": "ViwedStory",
+  "fields": [
+    {
+      "fieldName": "viewdTine",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "viwedStory",
+      "relationshipName": "appUser",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "viwed_story",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192647"
+}

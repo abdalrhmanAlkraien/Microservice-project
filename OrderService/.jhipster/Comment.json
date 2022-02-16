@@ -1,0 +1,82 @@
+{
+  "name": "Comment",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commentTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "replay",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "postMultimedia",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "postMultimedia"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "likeComment",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "likeComment"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "replayOf",
+      "relationshipName": "replay",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "comment",
+      "relationshipName": "post"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "replay",
+      "relationshipName": "replayOf",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "comment",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192847"
+}

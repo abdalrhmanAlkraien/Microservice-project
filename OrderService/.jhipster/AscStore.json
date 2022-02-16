@@ -1,0 +1,122 @@
+{
+  "name": "AscStore",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adVideoUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "storeImageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "coverImageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "averageRating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalRating",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hasFavorite",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "minOrder",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "delivery",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "priceRange",
+      "fieldType": "PriceRange",
+      "fieldValues": "NONE,CHEAP,MODERATE,EXPENSIVE,SPLURGE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "branch"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "promoCode",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "promoCode"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "story",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "story"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "storeFollower",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "followedBys"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "productTag",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "productTag"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "foodGenre",
+      "otherEntityRelationshipName": "stores",
+      "relationshipName": "foodGeners",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "storeType",
+      "otherEntityRelationshipName": "ascStore",
+      "relationshipName": "store"
+    }
+  ],
+  "entityTableName": "asc_store",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192747"
+}

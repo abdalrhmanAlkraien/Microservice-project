@@ -1,0 +1,37 @@
+{
+  "name": "OrderCustome",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "orderCustome",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ascOrder",
+      "otherEntityRelationshipName": "orderCustome",
+      "relationshipName": "ascOrder"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "mealCustmize",
+      "otherEntityRelationshipName": "orderCustome",
+      "relationshipName": "mealCustmize"
+    }
+  ],
+  "entityTableName": "order_custome",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191947"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "ReadBy",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "readBy",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "message",
+      "otherEntityRelationshipName": "readBy",
+      "relationshipName": "message"
+    }
+  ],
+  "entityTableName": "read_by",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191047"
+}

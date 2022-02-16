@@ -1,0 +1,67 @@
+{
+  "name": "Story",
+  "fields": [
+    {
+      "fieldName": "savedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "savedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "storyText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "multiMedia",
+      "fieldType": "MultiMedia",
+      "fieldValues": "PHOTO,VIDEO,AUDIO"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "postMultimedia",
+      "otherEntityRelationshipName": "story",
+      "relationshipName": "postMultimedia"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ascStore",
+      "otherEntityRelationshipName": "story",
+      "relationshipName": "store"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "story",
+      "relationshipName": "appUser"
+    }
+  ],
+  "entityTableName": "story",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "OrderService",
+  "clientRootFolder": "OrderService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191147"
+}
