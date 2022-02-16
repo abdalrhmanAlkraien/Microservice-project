@@ -1,0 +1,68 @@
+{
+  "name": "Driver",
+  "fields": [
+    {
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalTrips",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "averageTripTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "averageRating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalRating",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "DriverStatus",
+      "fieldValues": "AVAILABLE,UNAVAILABLE,UNREACHABLE,STOPPED,PENDING_REGISTRATION,DRAFT"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "driver",
+      "relationshipName": "appUser",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ascOrder",
+      "otherEntityRelationshipName": "driver",
+      "relationshipName": "orders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "driver",
+      "relationshipName": "rating"
+    }
+  ],
+  "entityTableName": "driver",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216190947"
+}

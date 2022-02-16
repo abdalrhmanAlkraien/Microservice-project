@@ -1,0 +1,60 @@
+{
+  "name": "StoreType",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cardColor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "backgroundImage",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ascStore",
+      "otherEntityRelationshipName": "store",
+      "relationshipName": "ascStore"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "foodGenre",
+      "otherEntityRelationshipName": "storeType",
+      "relationshipName": "foodGenre"
+    }
+  ],
+  "entityTableName": "store_type",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191347"
+}

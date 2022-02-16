@@ -1,0 +1,574 @@
+application {
+  config {
+    baseName GatewayService
+    applicationType gateway
+    packageName asc.foods.gateway
+    serverPort 8080
+    authenticationType oauth2
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    cacheProvider ehcache
+    messageBroker kafka
+    serviceDiscoveryType eureka
+    clientFramework angularX
+    clientTheme yeti
+    languages [en, fr, es, ar-ly]
+  }
+}
+
+application {
+  config {
+    baseName StoreService
+    applicationType microservice
+    packageName asc.foods.store
+    serverPort 8081
+    authenticationType oauth2
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    cacheProvider ehcache
+    messageBroker kafka
+    serviceDiscoveryType eureka
+    
+    languages [en, fr, es, ar-ly]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName OrderService
+    applicationType microservice
+    packageName asc.foods.order
+    serverPort 8082
+    authenticationType oauth2
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    cacheProvider ehcache
+    messageBroker kafka
+    serviceDiscoveryType eureka
+    
+    languages [en, fr, es, ar-ly]
+  }
+  entities *
+}
+
+
+application {
+  config {
+    baseName UserService
+    applicationType microservice
+    packageName asc.foods.user
+    serverPort 8084
+    authenticationType oauth2
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    cacheProvider ehcache
+    messageBroker kafka
+    serviceDiscoveryType eureka
+    
+    languages [en, fr, es, ar-ly]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName SearchService
+    applicationType microservice
+    packageName asc.foods.search
+    serverPort 8088
+    authenticationType oauth2
+    databaseType no
+    //devDatabaseType mysql
+    //prodDatabaseType mysql
+    //cacheProvider ehcache
+    messageBroker kafka
+    searchEngine elasticsearch
+    serviceDiscoveryType eureka
+    
+    languages [en, fr, es, ar-ly]
+  }
+}
+
+
+entity StoreType{
+	type String
+    imageUrl String
+    description String
+    creationDate Instant
+    createdBy String
+    cardColor String
+    backgroundImage String
+}
+
+entity AscStore {
+    name String
+    adVideoUrl String
+    storeImageUrl String
+    coverImageUrl String
+    averageRating Double
+    totalRating Long
+    creationDate Instant
+    createdBy String
+    hasFavorite Boolean
+    minOrder Long
+    delivery Double
+    description String
+    priceRange PriceRange
+}
+
+entity UserProduct{
+	isFavorite Boolean
+    orderedTimes Long
+    lastTimeOrdered Instant
+}
+
+entity Branch {
+    name String
+    latitude Double
+    longitude Double
+    averageRating Double
+    totalRating Long
+    creationDate Instant
+    createdBy String
+    status BranchStatus
+    discountType DiscountType
+    discountAmount Double
+    tax Double
+}
+
+entity BranchDeliveryMethod{
+    deliveryMetod DeliveryMethod
+}
+
+entity AscOrder {
+    specialRequest String
+    
+    latitude Double
+    longitude Double
+    rating Double
+    price Double
+    deliveryPrice Double
+    taxPrice Double
+    paymentMethod Payment
+    status OrderStatus
+    discount Double
+    estimationDeliveryTime Instant
+    actualDeliveryTime Instant
+    creationDate Instant
+    createdBy String
+}
+
+entity OrderStatusHistory {
+	orderId Long
+    status OrderStatus
+    creationDate Instant
+}
+
+entity Product {
+    name String
+    description String
+    imageUrl String
+    price Double
+    creationDate Instant
+    createdBy String
+    orderTimes Long
+    hasFavorite Boolean
+    discountType DiscountType
+    discountAmount Double
+    mealStatus MealStatus
+}
+
+entity ProductBranch{
+	productStatus ProductStatus
+}
+
+entity OrderProduct {
+	quantity Integer
+    optionsDesc String
+    specialRequest String
+    price Double
+    discount Double
+    creationDate Instant
+}
+
+entity Driver {
+    latitude Double
+    longitude Double
+    totalTrips Integer
+    averageTripTime Instant
+    averageRating Double
+    totalRating Long
+    status DriverStatus
+}
+
+
+entity UserAddress {
+	locationDescription String
+    latitude Double
+    longitude Double
+    area String
+    street String
+    flatNo Long
+    buildingName String
+    villaNo String
+    addressType AddressType
+}
+
+entity Rating {
+    rate Integer
+    comment String
+    type RatingType
+    creationDate Instant
+    createdBy String
+}
+
+entity FoodGenre {
+	gener String
+    imageUrl String
+    description String
+    creationDate Instant
+    createdBy String
+}
+
+entity PromoCode {
+    code String
+    description String
+    times Integer
+    creationDate Instant
+    expireDate Instant
+    createdBy String
+}
+entity ProductTag{
+	categoryName String
+    imageUrl String
+    description String
+    creationDate Instant
+    createdBy String
+
+}
+
+entity ProductOption {
+    code String
+    name String
+    type String
+    category String
+    price Double
+    description String
+    
+    creationDate Instant
+    createdBy String
+}
+
+entity StoreFollower {
+    creationDate Instant
+}
+
+entity MealCustmize
+{
+    title String
+    price Double
+    imageUrl String
+    orderNumber Long
+    
+}
+entity ItemType{
+title String
+decription String
+imageUrl String
+creationDate Instant
+creationBy String
+increase Boolean
+}
+
+entity AppUser{
+    id String
+    mobileNumber String 
+    login String
+    firstName String
+    lastName String
+    email String
+    activated Boolean
+    langKey String
+    imageUrl String
+    userStatus UserStatus
+    coverPhoto String
+    userType UserType
+    dob String // date of birth
+    gender Gender
+    isHiring Boolean
+    enableMessages Boolean
+    enableNotifications Boolean
+    enableOffersNotifications Boolean
+    isDark Boolean
+}
+
+
+entity Post{
+	id Long
+    decription String
+    postTime Instant
+    createdBy String
+}
+
+entity LikePost{
+    id Long
+    likeDate Instant
+    createdBy String
+    likeReactive LikeReactive
+}
+
+
+entity Comment{
+    id Long
+    text String
+    commentTime Instant
+    createdBy String
+    imageUrl String
+    replay String
+}
+
+entity LikeComment{
+	id Long
+    creationDate Instant
+	createdBy String
+    likeReactive LikeReactive
+}
+
+entity PostMultimedia{
+  id Long
+  caption String
+  url String
+  multiMedia MultiMedia
+}
+
+
+entity Save{
+
+    savedBy String
+    savedDate Instant
+
+}
+
+entity Story{
+    savedBy String
+    savedDate Instant
+    endDate Instant
+    storyText String
+    multiMedia MultiMedia
+    url String // we will delete in next genrate
+    description String
+
+}
+
+entity ViwedStory
+{
+	viewdTine Instant
+    
+}
+entity OrderCustome{
+
+}
+
+
+entity Room {
+	userSender Long
+    userReciver Long
+}
+
+entity UserAndRoom{
+
+}
+
+
+entity Message {
+	text String
+    creationDate Instant
+	sender String
+    readBy Boolean
+    mediaType AscMediaType
+    reaction Reaction
+}
+
+entity ReadBy{
+
+}
+
+enum OrderStatus {
+    PENDING, PREPARING, COLLECTING, DELIVERY, READY, FINISHED
+}
+
+enum MealStatus {
+    BREAKFAST,DINNER,LUNCH
+}
+
+
+enum BranchStatus {
+    CLOSED, OPENED, PENDING_REGISTRATION, DRAFT, STOPPED
+}
+
+enum ProductStatus {
+    UNAVAILABLE, OUTOFSTOCK, AVAILABLE
+}
+
+enum DriverStatus {
+    AVAILABLE, UNAVAILABLE, UNREACHABLE, STOPPED, PENDING_REGISTRATION, DRAFT
+}
+
+enum DeliveryMethod {
+    STORE, US, PICKUP
+}
+enum PriceRange{
+    NONE, CHEAP, MODERATE, EXPENSIVE, SPLURGE
+}
+enum Payment {
+    CASH, CREDITCARD
+}
+
+enum RatingType {
+    ORDER, DRIVER_TO_USER, USER_TO_DRIVER
+}
+enum DiscountType
+{
+	NONE,FIX, PERCENTAGE
+}
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+enum AddressType {
+    WORK, HOME, STORE, OTHER
+}
+
+enum MultiMedia{
+	PHOTO, VIDEO, AUDIO
+}
+
+enum LikeReactive{
+	LIKE, DISLIKE
+}
+
+enum ReportType{
+    NONE
+    POLICY
+    HATE_SPEEC
+    NUDITY
+    VIOLENCE
+    HARASSMENT
+    SUICUDE_OR_SELF_INJURY
+    SPAM
+    UNAUTHORIZED_SALES
+    TERRORISM
+    SOMETHING_ELSE
+}
+
+enum UserStatus{
+	ONLINE, OFFLINE, ACTIVE, DEACTIVE
+}
+
+enum Gender{
+	MALE,FEMALE
+}
+enum UserType{
+REVIEWER,NORMAL
+}
+
+
+enum Reaction{
+	NONE, SMILE, HAPPY, SAD, LIKE, LOVE, ANGRE
+}
+
+enum AscMediaType
+{
+TEXT, FILE, IMAGE, VIDEO
+}
+
+
+relationship OneToOne {
+    Driver to AppUser
+
+}
+
+relationship ManyToMany {
+    AscStore{foodGeners} to FoodGenre{stores}
+    AppUser{friends} to AppUser{friendOfs}
+    Comment{replay} to Comment{replayOf}
+    AppUser to ViwedStory
+}
+
+relationship OneToMany {
+    AscStore to Branch{store}
+    StoreType to AscStore{store}
+    StoreType to FoodGenre
+    AscStore to Product{store}
+    Branch{orders} to AscOrder{store}
+    AscStore to PromoCode{store}
+    AscStore to Story{store}
+    UserAddress{orders} to AscOrder
+    Product to ProductOption
+    FoodGenre to Product
+    AppUser{orders} to AscOrder
+    Driver{orders} to AscOrder
+    AppUser to Rating
+    AppUser to UserAddress
+    Driver to Rating
+    AscOrder to Rating{order}
+    
+    AscOrder{products} to OrderProduct{order}
+    Product{orders} to OrderProduct
+    AscStore{followedBys} to StoreFollower{store}
+    AppUser{follows} to StoreFollower
+    
+    AppUser to UserProduct
+    Product to UserProduct
+    AscStore to ProductTag{store}
+	ProductTag to Product
+
+    Product to ItemType
+    ItemType to MealCustmize
+    
+    AppUser to Post
+    Post to LikePost
+    AppUser to LikePost
+    Post to PostMultimedia
+    
+    AppUser to Comment
+    AppUser to LikeComment
+    Comment to PostMultimedia
+    Post to Comment 
+    Comment to LikeComment
+    
+    AppUser to Save
+    Post to Save
+    
+    AppUser to Story
+    Story to PostMultimedia
+    
+    Product to OrderCustome
+    AscOrder to OrderCustome
+    MealCustmize to OrderCustome
+    
+    Room to Message
+    Room to UserAndRoom
+    AppUser to UserAndRoom
+    AppUser to ReadBy
+    Message to ReadBy
+
+    Product to  ProductBranch
+    Branch to ProductBranch
+    Branch to BranchDeliveryMethod  
+
+
+}
+
+
+// Set pagination options
+paginate Product, AscOrder, Message, Post with infinite-scroll
+paginate AscStore, Message, Post with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass
+

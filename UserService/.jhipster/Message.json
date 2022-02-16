@@ -1,0 +1,58 @@
+{
+  "name": "Message",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "sender",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "readBy",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "mediaType",
+      "fieldType": "AscMediaType",
+      "fieldValues": "TEXT,FILE,IMAGE,VIDEO"
+    },
+    {
+      "fieldName": "reaction",
+      "fieldType": "Reaction",
+      "fieldValues": "NONE,SMILE,HAPPY,SAD,LIKE,LOVE,ANGRE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "readBy",
+      "otherEntityRelationshipName": "message",
+      "relationshipName": "readBy"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "room",
+      "otherEntityRelationshipName": "message",
+      "relationshipName": "room"
+    }
+  ],
+  "entityTableName": "message",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192547"
+}

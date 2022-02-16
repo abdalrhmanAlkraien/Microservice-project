@@ -1,0 +1,40 @@
+{
+  "name": "Room",
+  "fields": [
+    {
+      "fieldName": "userSender",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "userReciver",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "message",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "message"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userAndRoom",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "userAndRoom"
+    }
+  ],
+  "entityTableName": "room",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191847"
+}

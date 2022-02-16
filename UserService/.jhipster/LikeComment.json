@@ -1,0 +1,49 @@
+{
+  "name": "LikeComment",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "likeReactive",
+      "fieldType": "LikeReactive",
+      "fieldValues": "LIKE,DISLIKE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "likeComment",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "likeComment",
+      "relationshipName": "comment"
+    }
+  ],
+  "entityTableName": "like_comment",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191547"
+}

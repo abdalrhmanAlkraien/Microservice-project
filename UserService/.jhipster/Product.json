@@ -1,0 +1,120 @@
+{
+  "name": "Product",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderTimes",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "hasFavorite",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "discountType",
+      "fieldType": "DiscountType",
+      "fieldValues": "NONE,FIX,PERCENTAGE"
+    },
+    {
+      "fieldName": "discountAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "mealStatus",
+      "fieldType": "MealStatus",
+      "fieldValues": "BREAKFAST,DINNER,LUNCH"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "productOption",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productOption"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderProduct",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "orders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userProduct",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "userProduct"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "itemType",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "itemType"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderCustome",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "orderCustome"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "productBranch",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productBranch"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ascStore",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "store"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "foodGenre",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "foodGenre"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "productTag",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productTag"
+    }
+  ],
+  "entityTableName": "product",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216193647"
+}

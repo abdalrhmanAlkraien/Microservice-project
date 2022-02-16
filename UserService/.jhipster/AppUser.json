@@ -1,0 +1,205 @@
+{
+  "name": "AppUser",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobileNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "langKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userStatus",
+      "fieldType": "UserStatus",
+      "fieldValues": "ONLINE,OFFLINE,ACTIVE,DEACTIVE"
+    },
+    {
+      "fieldName": "coverPhoto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userType",
+      "fieldType": "UserType",
+      "fieldValues": "REVIEWER,NORMAL"
+    },
+    {
+      "fieldName": "dob",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE"
+    },
+    {
+      "fieldName": "isHiring",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableMessages",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableNotifications",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "enableOffersNotifications",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isDark",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "ascOrder",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "orders"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "rating"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userAddress",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "userAddress"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "storeFollower",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "follows"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userProduct",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "userProduct"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "post"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "likePost",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "likePost"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "comment"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "likeComment",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "likeComment"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "save",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "save"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "story",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "story"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userAndRoom",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "userAndRoom"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "readBy",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "readBy"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "friendOfs",
+      "relationshipName": "friends",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "viwedStory",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "viwedStory",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "driver",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "driver",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "friends",
+      "relationshipName": "friendOfs",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "app_user",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "UserService",
+  "clientRootFolder": "UserService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191247"
+}
