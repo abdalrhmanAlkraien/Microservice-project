@@ -1,0 +1,49 @@
+{
+  "name": "LikePost",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "likeDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "likeReactive",
+      "fieldType": "LikeReactive",
+      "fieldValues": "LIKE,DISLIKE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "likePost",
+      "relationshipName": "post"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "likePost",
+      "relationshipName": "appUser"
+    }
+  ],
+  "entityTableName": "like_post",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216190647"
+}

@@ -1,0 +1,120 @@
+{
+  "name": "AscOrder",
+  "fields": [
+    {
+      "fieldName": "specialRequest",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "deliveryPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "taxPrice",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "paymentMethod",
+      "fieldType": "Payment",
+      "fieldValues": "CASH,CREDITCARD"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValues": "PENDING,PREPARING,COLLECTING,DELIVERY,READY,FINISHED"
+    },
+    {
+      "fieldName": "discount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "estimationDeliveryTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "actualDeliveryTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "rating",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "rating"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderProduct",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "products"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderCustome",
+      "otherEntityRelationshipName": "ascOrder",
+      "relationshipName": "orderCustome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "store"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userAddress",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "userAddress"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "driver",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "driver"
+    }
+  ],
+  "entityTableName": "asc_order",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191747"
+}

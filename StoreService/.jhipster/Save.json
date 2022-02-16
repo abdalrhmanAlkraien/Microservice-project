@@ -1,0 +1,40 @@
+{
+  "name": "Save",
+  "fields": [
+    {
+      "fieldName": "savedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "savedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "save",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "post",
+      "otherEntityRelationshipName": "save",
+      "relationshipName": "post"
+    }
+  ],
+  "entityTableName": "save",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216193247"
+}

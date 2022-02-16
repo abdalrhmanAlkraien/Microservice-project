@@ -1,0 +1,48 @@
+{
+  "name": "MealCustmize",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderCustome",
+      "otherEntityRelationshipName": "mealCustmize",
+      "relationshipName": "orderCustome"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "itemType",
+      "otherEntityRelationshipName": "mealCustmize",
+      "relationshipName": "itemType"
+    }
+  ],
+  "entityTableName": "meal_custmize",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216193047"
+}

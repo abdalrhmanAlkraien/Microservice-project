@@ -1,0 +1,16 @@
+package asc.foods.store.service.mapper;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class AscStoreMapperTest {
+
+    private AscStoreMapper ascStoreMapper;
+
+    @BeforeEach
+    public void setUp() {
+        ascStoreMapper = new AscStoreMapperImpl();
+    }
+}

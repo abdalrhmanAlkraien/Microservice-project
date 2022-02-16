@@ -1,0 +1,59 @@
+{
+  "name": "Rating",
+  "fields": [
+    {
+      "fieldName": "rate",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "RatingType",
+      "fieldValues": "ORDER,DRIVER_TO_USER,USER_TO_DRIVER"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "appUser"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "driver",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "driver"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ascOrder",
+      "otherEntityRelationshipName": "rating",
+      "relationshipName": "order"
+    }
+  ],
+  "entityTableName": "rating",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216193547"
+}

@@ -1,0 +1,66 @@
+{
+  "name": "Post",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "decription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "likePost",
+      "otherEntityRelationshipName": "post",
+      "relationshipName": "likePost"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "postMultimedia",
+      "otherEntityRelationshipName": "post",
+      "relationshipName": "postMultimedia"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "comment",
+      "otherEntityRelationshipName": "post",
+      "relationshipName": "comment"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "save",
+      "otherEntityRelationshipName": "post",
+      "relationshipName": "save"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "post",
+      "relationshipName": "appUser"
+    }
+  ],
+  "entityTableName": "post",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216192347"
+}

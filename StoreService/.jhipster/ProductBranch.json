@@ -1,0 +1,37 @@
+{
+  "name": "ProductBranch",
+  "fields": [
+    {
+      "fieldName": "productStatus",
+      "fieldType": "ProductStatus",
+      "fieldValues": "UNAVAILABLE,OUTOFSTOCK,AVAILABLE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productBranch",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "branch",
+      "otherEntityRelationshipName": "productBranch",
+      "relationshipName": "branch"
+    }
+  ],
+  "entityTableName": "product_branch",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["StoreService", "OrderService", "UserService"],
+  "microserviceName": "StoreService",
+  "clientRootFolder": "StoreService",
+  "databaseType": "sql",
+  "changelogDate": "20220216191447"
+}
