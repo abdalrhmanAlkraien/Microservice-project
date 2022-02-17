@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql
+  namespace: shopbia
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: shopbia-mysql-pvc
+  namespace: shopbia
+spec:
+  storageClassName: manual
+  volumeName: pv-mysql
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: shopbia
+  labels:
+    app: mysql-secret
+type: Opaque
+data:
+  mysql-user: root
+  mysql-password: ZGZhODI3ODEzNDY0YzdhZjlmMTEwODZiNTBmNDE5OWUyOTg2ZGNlODExOTEwYzEwYmY2NTVkMTY5YWE2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  mysql
+  namespace: shopbia
+  labels:
+    app:  mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  mysql
+    spec:
+      containers:
+      - name:  mysql
+        image:  mysql:8.0.20
+        # command:
+        # - mysqld    
+        # args:
+        # - --lower_case_table_names=1
+        # - --skip-ssl
+        # - --character_set_server=utf8mb4
+        # - --explicit_defaults_for_timestamp
+        env:
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_ROOT_PASSWORD
+          value: DevelopedByAbdAlrhmanAlkraien#2049278355
+        - name: MYSQL_DATABASE
+          value: food_db
+        ports:
+        - containerPort:  3306
+          name:  mysql
+        volumeMounts:
+        - name: mysql-volume
+          mountPath: /var/lib/mysql/
+      volumes:
+        - name: mysql-volume
+          persistentVolumeClaim:
+            claimName: shopbia-mysql-pvc
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: shopbia
+spec:
+  selector:
+    app: mysql
+  type: ClusterIP
+  ports:
+  - name: mysql
+    protocol: TCP
+    port: 3306
+    targetPort: 3306

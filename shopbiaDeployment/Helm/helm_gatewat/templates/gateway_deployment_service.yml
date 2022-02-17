@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  gateway
+  namespace: shopbia
+  labels:
+    app:  gateway
+spec:
+  selector:
+    matchLabels:
+      app: gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  gateway
+    spec:
+      containers:
+      - name:  gateway
+        image:  altshiftcreative/food-app-gateway-service:v1.0.5 
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          valueFrom:
+            configMapKeyRef:
+              name: gateway-config
+              key: profile
+        - name: MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED
+          value: "false"
+        - name: EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE
+          value: http://admin:$${jhipster.registry.password}@jhipster-registry.shopbia.svc.cluster.local:8761/eureka
+        - name: SPRING_CLOUD_CONFIG_URI
+          value: http://admin:$${jhipster.registry.password}@jhipster-registry.shopbia.svc.cluster.local:8761/config
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/food_db?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+        - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI
+          value: http://shop.com/auth/realms/jhipster
+        - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID
+          value: web_app
+        - name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET
+          value: web_app
+        - name: KAFKA_BOOTSTRAPSERVERS 
+          value: kafka-service:9092
+        - name: ZUUL_SENSITIVE_HEADERS
+          valueFrom:
+            configMapKeyRef:
+              name: gateway-config
+              key: zull-config
+
+        ports:
+        - containerPort:  8080
+          name:  gateway
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-service
+  namespace: shopbia
+spec:
+  selector:
+    app: gateway
+  type: LoadBalancer
+  ports:
+  - name: gateway
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30012

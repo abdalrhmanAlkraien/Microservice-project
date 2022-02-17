@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-registry
+  namespace: shopbia
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: registry-pvc
+  namespace: shopbia
+  labels:
+    app: registry-pvc
+spec:
+  storageClassName: manual
+  volumeName: pv-registry
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
