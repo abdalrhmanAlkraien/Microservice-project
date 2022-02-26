@@ -1,0 +1,19 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry-ingress
+  namespace: abed-roost
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: 13.235.13.30.nip.io
+    http:
+      paths:
+      - path: /registry
+        pathType: Prefix
+        backend:
+          service:
+            name: jhipster-registry
+            port:
+              number: 8761
